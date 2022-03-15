@@ -33,7 +33,7 @@ Prediction with Constrain Decoding: `70.02`
 ## Interactive
 `python interactive.py --logdir ./models/spider-sl --db_id student_1 --db-path ./data/spider/database --schema-path ./data/spider/tables.json`
 
-##Reference Code
+## Reference Code
 `https://github.com/ryanzhumich/editsql`
 
 `https://github.com/benbogin/spider-schema-gnn-global`
