@@ -1,0 +1,37 @@
+description: sql
+
+target:
+  service: amlk8s
+  name: itpeusp40cl
+  vc: resrchvc
+
+storage:
+  longxudou:
+    storage_account_name: usscv100data
+    container_name: v-longxudou
+
+environment:
+  image: pytorch/pytorch:1.6.0-cuda10.1-cudnn7-devel
+  registry: docker.io
+  setup:
+    - sudo apt-get install -y git
+    - pip install wandb
+    - pip install numpy==1.20.3
+    - pip install fairseq==0.10.2
+
+code:
+  local_dir: $CONFIG_DIR
+
+jobs:
+- name: dslv2_sl_nop
+  sku: G4
+  command:
+  - python train.py
+    --dataset_path /mnt/longxudou/data/dataset_post/spider_sl/bin/
+    --exp_name spider_sl
+    --models_path /mnt/longxudou/project/bart_for_sp/ijcai_models
+    --total_num_update 20000
+    --max_tokens 1400
+    --bart_model_path /mnt/longxudou/data/BART-large
+
+
